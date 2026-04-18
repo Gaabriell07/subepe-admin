@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter, DialogDescription } from '@/components/ui/dialog'
 import { Plus, FileText, Loader2, Trash2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import api from '@/lib/api'
@@ -20,6 +20,11 @@ export default function ComunicadosPage() {
   const [enviando,    setEnviando]    = useState(false)
   const [form, setForm] = useState({ titulo: '', contenido: '' })
 
+  // ── Confirmación de eliminación (sin window.confirm para evitar INP) ──────
+  const [confirmando,    setConfirmando]    = useState(false)
+  const [eliminando,     setEliminando]     = useState(false)
+  const [comunicadoAEliminar, setComunicadoAEliminar] = useState(null)
+
   const cargar = async () => {
     setCargando(true)
     try {
@@ -31,13 +36,23 @@ export default function ComunicadosPage() {
 
   useEffect(() => { cargar() }, [])
 
-  const handleEliminar = async (c) => {
-    if (!confirm(`¿Eliminar el comunicado "${c.titulo}"? Esta acción no se puede deshacer.`)) return
+  // Abre el diálogo de confirmación sin bloquear el hilo
+  const pedirConfirmacion = (c) => {
+    setComunicadoAEliminar(c)
+    setConfirmando(true)
+  }
+
+  const handleEliminar = async () => {
+    if (!comunicadoAEliminar) return
+    setEliminando(true)
     try {
-      await api.delete(`/admin/comunicado/${c.id}`)
+      await api.delete(`/admin/comunicado/${comunicadoAEliminar.id}`)
       toast.success('Comunicado eliminado')
+      setConfirmando(false)
+      setComunicadoAEliminar(null)
       cargar()
     } catch { toast.error('Error al eliminar el comunicado') }
+    finally { setEliminando(false) }
   }
 
   const handleCrear = async (e) => {
@@ -90,6 +105,28 @@ export default function ComunicadosPage() {
         </Dialog>
       </div>
 
+      {/* ── Diálogo de confirmación de eliminación (no bloquea el hilo) ─────── */}
+      <Dialog open={confirmando} onOpenChange={(v) => { if (!eliminando) setConfirmando(v) }}>
+        <DialogContent className="max-w-sm">
+          <DialogHeader>
+            <DialogTitle>Eliminar comunicado</DialogTitle>
+            <DialogDescription>
+              ¿Estás seguro de eliminar <strong>"{comunicadoAEliminar?.titulo}"</strong>?
+              Esta acción no se puede deshacer.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button variant="outline" onClick={() => setConfirmando(false)} disabled={eliminando}>
+              Cancelar
+            </Button>
+            <Button variant="destructive" onClick={handleEliminar} disabled={eliminando}>
+              {eliminando ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Trash2 className="w-4 h-4 mr-2" />}
+              Eliminar
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       <div className="space-y-3">
         {cargando
           ? Array.from({ length: 3 }).map((_, i) => <Card key={i}><CardContent className="pt-4 h-20 animate-pulse bg-muted rounded-xl" /></Card>)
@@ -116,7 +153,7 @@ export default function ComunicadosPage() {
                     variant="ghost"
                     size="icon"
                     className="text-destructive hover:text-destructive shrink-0 self-start"
-                    onClick={() => handleEliminar(c)}
+                    onClick={() => pedirConfirmacion(c)}
                     title="Eliminar comunicado"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -136,3 +173,4 @@ export default function ComunicadosPage() {
     </div>
   )
 }
+
