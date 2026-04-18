@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { soloLetras, soloDni } from '@/lib/validaciones'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -123,10 +124,36 @@ export default function ConductoresPage() {
             </DialogHeader>
             <form onSubmit={handleCrear} className="space-y-3 mt-2">
               <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-1"><Label>Nombres</Label><Input value={form.nombres} onChange={e => setForm({...form, nombres: e.target.value})} required /></div>
-                <div className="space-y-1"><Label>Apellidos</Label><Input value={form.apellidos} onChange={e => setForm({...form, apellidos: e.target.value})} required /></div>
+                <div className="space-y-1">
+                  <Label>Nombres</Label>
+                  <Input
+                    value={form.nombres}
+                    onChange={e => setForm({...form, nombres: soloLetras(e.target.value)})}
+                    placeholder="Ej: Juan Carlos"
+                    required
+                  />
+                </div>
+                <div className="space-y-1">
+                  <Label>Apellidos</Label>
+                  <Input
+                    value={form.apellidos}
+                    onChange={e => setForm({...form, apellidos: soloLetras(e.target.value)})}
+                    placeholder="Ej: García"
+                    required
+                  />
+                </div>
               </div>
-              <div className="space-y-1"><Label>DNI</Label><Input value={form.dni} onChange={e => setForm({...form, dni: e.target.value})} maxLength={8} required /></div>
+              <div className="space-y-1">
+                <Label>DNI</Label>
+                <Input
+                  value={form.dni}
+                  onChange={e => setForm({...form, dni: soloDni(e.target.value)})}
+                  maxLength={8}
+                  placeholder="12345678"
+                  inputMode="numeric"
+                  required
+                />
+              </div>
               <div className="space-y-1"><Label>Fecha de nacimiento</Label><Input type="date" value={form.fechaNacimiento} onChange={e => setForm({...form, fechaNacimiento: e.target.value})} required /></div>
               <div className="space-y-1">
                 <Label>Sexo</Label>

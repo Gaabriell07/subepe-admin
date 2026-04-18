@@ -52,11 +52,16 @@ function setCache(url, data) {
 }
 
 function autoInvalidate(mutationUrl) {
-  // Encontrar la clave en el mapa (compara sin query params)
   const baseUrl = mutationUrl.split('?')[0]
-  const toInvalidate = INVALIDATION_MAP[baseUrl] || []
 
-  // Invalidar todas las entradas del caché cuya clave base coincida
+  // Busca en el mapa usando prefijo: '/admin/comunicado/abc' matchea '/admin/comunicado'
+  const toInvalidate = []
+  for (const [mapKey, routes] of Object.entries(INVALIDATION_MAP)) {
+    if (baseUrl === mapKey || baseUrl.startsWith(mapKey + '/')) {
+      toInvalidate.push(...routes)
+    }
+  }
+
   for (const key of memCache.keys()) {
     const keyBase = key.split('?')[0]
     if (toInvalidate.includes(keyBase)) {

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import { Plus, FileText, Loader2 } from 'lucide-react'
+import { Plus, FileText, Loader2, Trash2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import api from '@/lib/api'
 
@@ -30,6 +30,15 @@ export default function ComunicadosPage() {
   }
 
   useEffect(() => { cargar() }, [])
+
+  const handleEliminar = async (c) => {
+    if (!confirm(`¿Eliminar el comunicado "${c.titulo}"? Esta acción no se puede deshacer.`)) return
+    try {
+      await api.delete(`/admin/comunicado/${c.id}`)
+      toast.success('Comunicado eliminado')
+      cargar()
+    } catch { toast.error('Error al eliminar el comunicado') }
+  }
 
   const handleCrear = async (e) => {
     e.preventDefault()
@@ -103,6 +112,15 @@ export default function ComunicadosPage() {
                       </p>
                     )}
                   </div>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-destructive hover:text-destructive shrink-0 self-start"
+                    onClick={() => handleEliminar(c)}
+                    title="Eliminar comunicado"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </Button>
                 </div>
               </CardContent>
             </Card>

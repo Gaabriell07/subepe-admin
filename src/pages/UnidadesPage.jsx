@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { soloAlfanumerico } from '@/lib/validaciones'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -66,7 +67,13 @@ export default function UnidadesPage() {
             <form onSubmit={handleCrear} className="space-y-3 mt-2">
               <div className="space-y-1">
                 <Label>Placa</Label>
-                <Input placeholder="Ej: ABC-123" value={form.placa} onChange={e => setForm({...form, placa: e.target.value.toUpperCase()})} required />
+                <Input
+                  placeholder="Ej: ABC-123"
+                  value={form.placa}
+                  onChange={e => setForm({...form, placa: soloAlfanumerico(e.target.value)})}
+                  maxLength={8}
+                  required
+                />
               </div>
               <div className="space-y-1">
                 <Label>Nombre / descripción</Label>
