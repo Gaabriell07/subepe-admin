@@ -34,7 +34,7 @@ export default function PasajerosPage() {
     try {
       const { data: res } = await api.get('/admin/pasajeros', { params: { page, limit: 20, buscar: query } })
       setData(res)
-    } catch { /* silencioso */ }
+    } catch {  }
     finally { setCargando(false) }
   }, [page, query])
 
@@ -57,7 +57,7 @@ export default function PasajerosPage() {
         <CardHeader>
           <div className="flex items-center justify-between flex-wrap gap-3">
             <CardTitle className="text-base">
-              {data.total.toLocaleString()} pasajeros en total
+              {cargando ? 'Cargando...' : `${data.total.toLocaleString()} pasajeros en total`}
             </CardTitle>
             <form onSubmit={handleBuscar} className="flex gap-2">
               <div className="relative">
@@ -115,7 +115,7 @@ export default function PasajerosPage() {
                 </TableBody>
               </Table>
 
-              {/* Paginación */}
+              {}
               <div className="flex items-center justify-between mt-4">
                 <p className="text-sm text-muted-foreground">
                   Página {page} de {data.totalPaginas}

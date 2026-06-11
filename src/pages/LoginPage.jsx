@@ -28,14 +28,14 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted/40 px-4">
       <div className="w-full max-w-md space-y-6">
-        {/* Header */}
+        {}
         <div className="flex flex-col items-center text-center space-y-2">
           <img src="/subepeicono.png" alt="SubePE Logo" className="w-16 h-16 object-contain" />
           <h1 className="text-2xl font-bold">SubePE Admin</h1>
           <p className="text-muted-foreground text-sm">Panel de administración del sistema de transporte</p>
         </div>
 
-        {/* Card */}
+        {}
         <Card>
           <CardHeader>
             <CardTitle>Iniciar sesión</CardTitle>

@@ -36,7 +36,6 @@ export default function ComunicadosPage() {
 
   useEffect(() => { cargar() }, [])
 
-  // Abre el diálogo de confirmación sin bloquear el hilo
   const pedirConfirmacion = (c) => {
     setComunicadoAEliminar(c)
     setConfirmando(true)
@@ -105,7 +104,7 @@ export default function ComunicadosPage() {
         </Dialog>
       </div>
 
-      {/* ── Diálogo de confirmación de eliminación (no bloquea el hilo) ─────── */}
+      {}
       <Dialog open={confirmando} onOpenChange={(v) => { if (!eliminando) setConfirmando(v) }}>
         <DialogContent className="max-w-sm">
           <DialogHeader>

@@ -1,10 +1,5 @@
-// ─── Utilidades de validación y sanitización de inputs (Admin Web) ────────────
-// Importar donde se necesite: import { soloLetras, soloDni, ... } from '@/lib/validaciones'
 
-/**
- * Solo permite letras (incluye tildes, ñ, espacios).
- * Uso en Input: onChange={e => setVal(soloLetras(e.target.value))}
- */
+
 export function soloLetras(text) {
   return text.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/g, '');
 }

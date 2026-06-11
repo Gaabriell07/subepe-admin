@@ -1,0 +1,21 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:5173",
+  "loginUser": "etsosa@subepe.com",
+  "loginPassword": "ETSOSAPERU8",
+  "executionArgs": {
+    "projectName": "subepe-admin",
+    "projectPath": "e:\\Proyectos\\subepe-admin",
+    "testIds": [
+      "TC012"
+    ],
+    "additionalInstruction": "",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-QRZFkIve-FPDZy6wXDTZ15_E6tE6r_YnoiVFl6Am57qrJAKXBu1xddMa_BgTpGT-8dct3eGERISr-ykYWqLzyD_DAQnqwb7Fl3AQciwa9rVV5lRs0f1FECQjhsfwzEeKifA"
+    }
+  },
+  "serverPort": 52750
+}

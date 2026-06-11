@@ -34,7 +34,6 @@ export default function ConductoresPage() {
   const [seleccionado, setSeleccionado] = useState(null)
   const [enviando,    setEnviando]      = useState(false)
 
-  // Form nuevo conductor
   const [form, setForm] = useState({ email: '', password: '', nombres: '', apellidos: '', dni: '', fechaNacimiento: '', sexo: 'MASCULINO' })
   const [montoPago, setMontoPago]   = useState('')
   const [unidadId,  setUnidadId]    = useState('')
@@ -154,7 +153,16 @@ export default function ConductoresPage() {
                   required
                 />
               </div>
-              <div className="space-y-1"><Label>Fecha de nacimiento</Label><Input type="date" value={form.fechaNacimiento} onChange={e => setForm({...form, fechaNacimiento: e.target.value})} required /></div>
+              <div className="space-y-1">
+                <Label>Fecha de nacimiento</Label>
+                <Input 
+                  type="date" 
+                  value={form.fechaNacimiento} 
+                  onChange={e => setForm({...form, fechaNacimiento: e.target.value})} 
+                  max={new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split('T')[0]}
+                  required 
+                />
+              </div>
               <div className="space-y-1">
                 <Label>Sexo</Label>
                 <Select value={form.sexo} onValueChange={v => setForm({...form, sexo: v})}>
@@ -228,7 +236,7 @@ export default function ConductoresPage() {
         </CardContent>
       </Card>
 
-      {/* Modal pagar sueldo */}
+      {}
       <Dialog open={openPago} onOpenChange={setOpenPago}>
         <DialogContent className="max-w-sm">
           <DialogHeader><DialogTitle>Pagar sueldo</DialogTitle></DialogHeader>
@@ -242,7 +250,7 @@ export default function ConductoresPage() {
         </DialogContent>
       </Dialog>
 
-      {/* Modal asignar unidad */}
+      {}
       <Dialog open={openUnidad} onOpenChange={setOpenUnidad}>
         <DialogContent className="max-w-sm">
           <DialogHeader><DialogTitle>Asignar unidad</DialogTitle></DialogHeader>

@@ -12,6 +12,8 @@ import TarifarioPage    from '@/pages/TarifarioPage'
 import ComunicadosPage  from '@/pages/ComunicadosPage'
 import PenalidadesPage  from '@/pages/PenalidadesPage'
 
+import SolicitudesCarnetPage from '@/pages/SolicitudesCarnetPage'
+
 export default function App() {
   return (
     <AuthProvider>
@@ -25,6 +27,7 @@ export default function App() {
             <Route path="viajes"       element={<ViajesPage />} />
             <Route path="unidades"     element={<UnidadesPage />} />
             <Route path="tarifario"    element={<TarifarioPage />} />
+            <Route path="solicitudes"  element={<SolicitudesCarnetPage />} />
             <Route path="comunicados"  element={<ComunicadosPage />} />
             <Route path="penalidades"  element={<PenalidadesPage />} />
           </Route>

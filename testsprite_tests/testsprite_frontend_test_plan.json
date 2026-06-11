@@ -1,0 +1,857 @@
+[
+  {
+    "id": "TC001",
+    "title": "Iniciar sesión y acceder al dashboard",
+    "description": "An administrator can sign in with valid credentials and land on the protected dashboard with operational metrics and charts visible.",
+    "category": "Inicio de Sesión del Administrador",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dashboard is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify operational summary metrics and trend charts are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "El administrador inicia sesión y accede al dashboard",
+    "description": "This verifies that an administrator can log in and land on the protected dashboard with operational metrics visible.",
+    "category": "Autenticación y acceso a rutas protegidas",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dashboard is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify operational summary metrics are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "El dashboard protegido redirige a los visitantes no autenticados al inicio de sesión",
+    "description": "This verifies that visiting the dashboard without an active session sends the user to sign in instead of showing protected content.",
+    "category": "Autenticación y acceso a rutas protegidas",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the sign-in page is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Redirigir a usuarios no autenticados desde el dashboard",
+    "description": "A user who tries to open the protected dashboard without signing in is redirected to the login page.",
+    "category": "Inicio de Sesión del Administrador",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login page is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify protected dashboard content is not displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Ver resumen del dashboard e información de tendencias",
+    "description": "An administrator can review the dashboard’s core system totals and trend visualizations after signing in.",
+    "category": "Resumen del Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify passenger, driver, monthly trip, and revenue summary metrics are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify trip and recharge trend charts are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Agregar un nuevo conductor y verlo en la lista",
+    "description": "An administrator can create a new driver from the drivers page and confirm the new record appears in the driver table.",
+    "category": "Gestión de Conductores",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation option for drivers"
+      },
+      {
+        "type": "action",
+        "description": "Start adding a driver"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the driver details with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Submit the driver form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new driver appears in the driver table"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "El administrador crea un conductor y lo ve en la lista",
+    "description": "This verifies that a new driver can be added from the drivers page and then appears in the drivers table.",
+    "category": "Flujos centrales de gestión y revisión",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /conductores"
+      },
+      {
+        "type": "action",
+        "description": "Start creating a new driver"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the driver name field with Maria Lopez"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the driver identifier field with 12345678"
+      },
+      {
+        "type": "action",
+        "description": "Submit the driver form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new driver is displayed in the drivers table"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "El administrador crea una unidad de bus y la ve en la lista",
+    "description": "This verifies that a new bus unit can be registered from the bus management page and then appears in the units table.",
+    "category": "Flujos centrales de gestión y revisión",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /unidades"
+      },
+      {
+        "type": "action",
+        "description": "Start creating a new bus unit"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the plate field with ABC123"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the unit name field with Unidad Central"
+      },
+      {
+        "type": "action",
+        "description": "Submit the bus unit form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new bus unit is displayed in the units table"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Ver la lista de conductores",
+    "description": "An administrator can open the drivers section and review the existing driver table.",
+    "category": "Gestión de Conductores",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation option for drivers"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the driver table is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Registrar una nueva unidad de bus",
+    "description": "An administrator can create a new bus unit from the units page and see it listed afterward.",
+    "category": "Gestión de Unidades de Bus",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to manage bus units"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the bus plate field with a unique valid plate"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the bus name field with a unique bus name"
+      },
+      {
+        "type": "action",
+        "description": "Submit the bus form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new bus unit appears in the list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "El administrador actualiza una categoría de tarifa y ve el nuevo precio",
+    "description": "This verifies that fare pricing can be edited and the updated amount is shown in the pricing list after saving.",
+    "category": "Gestión de Tarifas",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /tarifario"
+      },
+      {
+        "type": "action",
+        "description": "Start editing a fare category"
+      },
+      {
+        "type": "action",
+        "description": "Update the fare amount to a valid value"
+      },
+      {
+        "type": "action",
+        "description": "Save the fare change"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated fare is displayed in the pricing list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "El administrador revisa los registros de pasajeros y viajes",
+    "description": "This verifies that the passenger directory and trip history pages load and display their recorded data after sign-in.",
+    "category": "Flujos centrales de gestión y revisión",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /pasajeros"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify passenger records are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /viajes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify trip records are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Ver el directorio de pasajeros",
+    "description": "An administrator can open the passenger directory and see passenger records when they are available.",
+    "category": "Directorio de Pasajeros",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to view passengers"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the passenger list is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Revisar el historial de viajes",
+    "description": "An administrator can open the trips page and see trip history for operational review.",
+    "category": "Registros de Viajes",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to review trips"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the trip list is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC015",
+    "title": "El administrador ve los comunicados",
+    "description": "This verifies that the announcements page loads and shows available announcements after sign-in.",
+    "category": "Gestión de Comunicados",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /comunicados"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify announcements are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC016",
+    "title": "Rechazar credenciales de inicio de sesión inválidas",
+    "description": "An administrator sees a validation or access error and remains unable to enter the protected area when invalid credentials are submitted.",
+    "category": "Inicio de Sesión del Administrador",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with invalid@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with invalid-password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a sign-in error is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dashboard is not displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC017",
+    "title": "El administrador revisa las penalidades",
+    "description": "This verifies that the penalties page loads and shows recorded penalties after sign-in.",
+    "category": "Revisión de Penalidades",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /penalidades"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify penalties are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC018",
+    "title": "Mostrar validación cuando faltan campos requeridos del conductor",
+    "description": "An administrator sees field validation and the driver is not created when the form is submitted with missing required details.",
+    "category": "Gestión de Conductores",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation option for drivers"
+      },
+      {
+        "type": "action",
+        "description": "Start adding a driver"
+      },
+      {
+        "type": "action",
+        "description": "Submit the driver form without completing required details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a driver form validation error is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no new driver is added to the driver table"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC019",
+    "title": "Rechazar un envío incompleto de unidad de bus",
+    "description": "An administrator cannot submit a bus unit without the required details and sees validation feedback.",
+    "category": "Gestión de Unidades de Bus",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to manage bus units"
+      },
+      {
+        "type": "action",
+        "description": "Submit the bus form without filling required fields"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no new bus unit is added"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC020",
+    "title": "La creación de conductor requiere campos válidos",
+    "description": "This verifies that submitting the driver form with missing required information shows validation feedback and does not create a record.",
+    "category": "Flujos centrales de gestión y revisión",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /conductores"
+      },
+      {
+        "type": "action",
+        "description": "Start creating a new driver"
+      },
+      {
+        "type": "action",
+        "description": "Submit the driver form without completing required fields"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify driver form validation is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no new driver is added to the drivers table"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC021",
+    "title": "Manejar un directorio de pasajeros vacío",
+    "description": "An administrator can open the passenger directory and see an empty state when no passengers are available.",
+    "category": "Directorio de Pasajeros",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to view passengers"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC022",
+    "title": "La actualización de tarifa requiere un monto válido",
+    "description": "This verifies that entering an invalid fare amount is rejected with validation feedback and the pricing list remains unchanged.",
+    "category": "Gestión de Tarifas",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /tarifario"
+      },
+      {
+        "type": "action",
+        "description": "Start editing a fare category"
+      },
+      {
+        "type": "action",
+        "description": "Update the fare amount to an invalid value"
+      },
+      {
+        "type": "action",
+        "description": "Save the fare change"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify fare validation is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the pricing list does not show the invalid update"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC023",
+    "title": "Manejar una lista de viajes vacía",
+    "description": "An administrator can open the trips page and see an empty state when no trips are available.",
+    "category": "Registros de Viajes",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the administrator password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to review trips"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message is visible"
+      }
+    ],
+    "priority": "Low"
+  }
+]

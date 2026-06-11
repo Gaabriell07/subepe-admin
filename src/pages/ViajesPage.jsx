@@ -32,7 +32,7 @@ export default function ViajesPage() {
       const params = { page, limit: 25, ...(estado !== 'todos' && { estado }) }
       const { data: res } = await api.get('/admin/viajes', { params })
       setData(res)
-    } catch { /* silencioso */ }
+    } catch {  }
     finally { setCargando(false) }
   }, [page, estado])
 
@@ -49,7 +49,9 @@ export default function ViajesPage() {
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between flex-wrap gap-3">
-            <CardTitle className="text-base">{data.total.toLocaleString()} viajes registrados</CardTitle>
+            <CardTitle className="text-base">
+              {cargando ? 'Cargando...' : `${data.total.toLocaleString()} viajes registrados`}
+            </CardTitle>
             <Select value={estado} onValueChange={setEstado}>
               <SelectTrigger className="w-44"><SelectValue placeholder="Filtrar estado" /></SelectTrigger>
               <SelectContent>

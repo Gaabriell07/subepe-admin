@@ -21,7 +21,7 @@ export default function PenalidadesPage() {
     try {
       const { data: res } = await api.get('/admin/penalidades', { params: { page, limit: 25 } })
       setData(res)
-    } catch { /* silencioso */ }
+    } catch {  }
     finally { setCargando(false) }
   }, [page])
 
@@ -36,7 +36,7 @@ export default function PenalidadesPage() {
         <p className="text-muted-foreground text-sm">Registro de penalidades aplicadas a pasajeros</p>
       </div>
 
-      {/* Resumen */}
+      {}
       <div className="grid grid-cols-2 gap-4">
         <Card>
           <CardContent className="pt-5">

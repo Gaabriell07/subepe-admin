@@ -1,0 +1,74 @@
+version: "2"
+type: frontend
+tech_stack:
+  - react
+  - vite
+  - tailwindcss
+  - shadcn-ui
+routes:
+  - path: /login
+    file: src/pages/LoginPage.jsx
+    auth_required: false
+    description: Login page for administrators
+  - path: /
+    file: src/pages/DashboardPage.jsx
+    auth_required: true
+    description: Main dashboard showing metrics
+  - path: /conductores
+    file: src/pages/ConductoresPage.jsx
+    auth_required: true
+    description: Manage drivers
+  - path: /pasajeros
+    file: src/pages/PasajerosPage.jsx
+    auth_required: true
+    description: View passengers
+  - path: /viajes
+    file: src/pages/ViajesPage.jsx
+    auth_required: true
+    description: View trips
+  - path: /unidades
+    file: src/pages/UnidadesPage.jsx
+    auth_required: true
+    description: Manage buses
+  - path: /tarifario
+    file: src/pages/TarifarioPage.jsx
+    auth_required: true
+    description: Manage pricing
+  - path: /comunicados
+    file: src/pages/ComunicadosPage.jsx
+    auth_required: true
+    description: Manage announcements
+  - path: /penalidades
+    file: src/pages/PenalidadesPage.jsx
+    auth_required: true
+    description: View penalties
+features:
+  - name: User Login
+    description: Administrator logs in
+    files:
+      - src/pages/LoginPage.jsx
+    entry_route: /login
+    user_interactions:
+      - Fill email input field
+      - Fill password input field
+      - Click enter to submit
+    api_calls:
+      - method: POST
+        endpoint: /api/auth/login
+    auth_required: false
+  - name: Manage Drivers
+    description: Create and view drivers
+    files:
+      - src/pages/ConductoresPage.jsx
+    entry_route: /conductores
+    user_interactions:
+      - Click add driver
+      - Fill driver details
+      - Submit form
+    api_calls:
+      - method: GET
+        endpoint: /api/admin/conductores
+      - method: POST
+        endpoint: /api/admin/conductores
+    auth_required: true
+known_limitations: []
